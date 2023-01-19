@@ -91,6 +91,42 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXCZ6QDSFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-YXCZ6QDSFH', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -430,7 +466,7 @@
   
   
   <div>
-    <h2><a href="/publication/conference-paper/">Structured Mixture of Continuation-ratio Logits Models for Ordinal Regression</a></h2>
+    <h2><a href="/publication/bnp-ordinal-regression/">Structured Mixture of Continuation-ratio Logits Models for Ordinal Regression</a></h2>
     <div class="article-style">
       
       We developed a novel methodology that can capture complex ordinal regression relationships while keeping neat and efficient computation. The benefits of the proposed methodology over the competing methods are demonstrated with several synthetic and real data examples.
